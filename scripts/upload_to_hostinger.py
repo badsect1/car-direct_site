@@ -106,20 +106,26 @@ def main():
         print(f"📂 원격 작업 디렉토리: {target_base}")
         ensure_remote_dir_sftp(sftp, target_base)
 
-        # 1. 단일 핵심 파일 업로드 (sitemap, robots)
-        key_files = ['sitemap.xml', 'robots.txt']
+        # 1. 단일 핵심 파일 업로드 (sitemap, robots, counsel, coverage, tip)
+        key_files = ['sitemap.xml', 'robots.txt', 'counsel.html', 'coverage.html', 'tip.html']
         for kf in key_files:
             local_path = os.path.join(ROOT_DIR, kf)
             if os.path.exists(local_path):
                 remote_path = posixpath.join(target_base, kf)
                 upload_file_sftp(sftp, local_path, remote_path)
 
-        # 2. data/ 폴더 업로드
+        # 2. 공통 에셋 폴더 업로드 (css, js, images)
+        for asset_folder in ['css', 'js', 'images']:
+            asset_dir = os.path.join(ROOT_DIR, asset_folder)
+            if os.path.exists(asset_dir):
+                upload_directory_sftp(sftp, asset_dir, target_base)
+
+        # 3. data/ 폴더 업로드
         data_dir = os.path.join(ROOT_DIR, 'data')
         if os.path.exists(data_dir):
             upload_directory_sftp(sftp, data_dir, target_base)
 
-        # 3. posts/ 폴더 업로드 (전체 칼럼 및 스타일, 스크립트)
+        # 4. posts/ 폴더 업로드 (전체 칼럼 및 스타일, 스크립트)
         posts_dir = os.path.join(ROOT_DIR, 'posts')
         if os.path.exists(posts_dir):
             upload_directory_sftp(sftp, posts_dir, target_base)

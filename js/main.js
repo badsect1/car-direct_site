@@ -106,4 +106,39 @@ document.addEventListener('DOMContentLoaded', () => {
       e.target.value = val;
     });
   });
+
+  // 5. Chips selection interaction (Single & Multi select)
+  const chipContainers = document.querySelectorAll('.chips-container');
+  chipContainers.forEach(container => {
+    const singleChips = container.querySelectorAll('.chip-select-btn[data-value]');
+    singleChips.forEach(btn => {
+      btn.addEventListener('click', () => {
+        singleChips.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    const multiChips = container.querySelectorAll('.chip-select-btn[data-check]');
+    multiChips.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+      });
+    });
+  });
+
+  // 6. Local file:// protocol smooth link resolution
+  if (window.location.protocol === 'file:') {
+    document.querySelectorAll('a[href^="/posts/"]').forEach(a => {
+      a.setAttribute('href', 'posts/index.html');
+    });
+    document.querySelectorAll('a[href="/"]').forEach(a => {
+      a.setAttribute('href', 'index.html');
+    });
+    document.querySelectorAll('a[href="/counsel.html"]').forEach(a => {
+      a.setAttribute('href', 'counsel.html');
+    });
+    document.querySelectorAll('a[href="/coverage.html"]').forEach(a => {
+      a.setAttribute('href', 'coverage.html');
+    });
+  }
 });

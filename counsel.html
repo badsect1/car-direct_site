@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>상담신청 - 다이렉트 자동차보험 다나와 비교</title>
-  <meta name="description" content="상담신청 - 자동차보험 다나와 자동차보험 이제 꼼꼼히 확인하고 합리적으로 결정하세요!">
+  <title>1:1 무료 상담신청 | 다이렉트 자동차보험 다나와 비교</title>
+  <meta name="description" content="국내 주요 7대 손해보험사 다이렉트 자동차보험료 비교견적 및 1:1 맞춤 무료상담을 신청하세요. 설계사 수수료 0원, 특약 할인 극대화!">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,8 +20,7 @@
         <a href="index.html" class="nav-link">HOME</a>
         <a href="counsel.html" class="nav-link active">상담신청</a>
         <a href="coverage.html" class="nav-link">보장내용</a>
-        <a href="tip.html" class="nav-link">보험료절약TIP</a>
-        <a href="/posts/" class="nav-link">보험정보칼럼</a>
+        <a href="/posts/" class="nav-link">보험정보</a>
       </nav>
 
       <button class="mobile-toggle" id="mobileToggle" aria-label="메뉴 열기">
@@ -35,43 +34,244 @@
     <a href="index.html" class="nav-link">HOME</a>
     <a href="counsel.html" class="nav-link active">상담신청</a>
     <a href="coverage.html" class="nav-link">보장내용</a>
-    <a href="tip.html" class="nav-link">보험료절약TIP</a>
-    <a href="/posts/" class="nav-link">보험정보칼럼</a>
+    <a href="/posts/" class="nav-link">보험정보</a>
   </div>
 
   <main>
-    <!-- Hero Banner Image Section -->
-    <div class="hero-banner-wrap">
-      <img src="images/hero_bg.jpg" alt="자동차보험 다나와 - 자동차보험 이제 꼼꼼히 확인하고 합리적으로 선택하세요!" class="hero-bg-img">
-    </div>
-
-    <!-- Below Hero Section (Red Notice + Attached Arrow & Click Banner) -->
-    <section class="below-hero-section">
-      <div class="container">
-        <!-- Red Ad Notice Text Below Hero Background -->
-        <p class="red-ad-notice">
-          ※ 본 광고는 소정의 광고비(원고료 등)를 지급받아 작성하였습니다.
+    <!-- Modern Hero Banner Section -->
+    <section class="page-hero-banner">
+      <div class="container page-hero-inner">
+        <span class="page-hero-badge">⚡ 1:1 전문가 무료 맞춤 컨설팅</span>
+        <h2 class="page-hero-title">복잡한 자동차보험, 전문가와 1:1로 비교하고<br>가장 알뜰한 최저가로 설계하세요</h2>
+        <p class="page-hero-desc">
+          현대해상, DB손해보험, KB손해보험, AXA, 한화손해보험 등 국내 주요 7대 손해보험사의 특약 할인율을 실시간으로 비교 분석하여 고객님의 차종과 연령에 딱 맞는 최적의 견적을 안내해 드립니다.
         </p>
-
-        <!-- Attached Section: Arrow, Text & Click Banner -->
-        <div class="counsel-attached-section">
-          <img src="images/arrow.jpg" alt="화살표" class="arrow-icon-img">
-          
-          <h3 class="attached-desc-1">자동차보험 !</h3>
-          <p class="attached-desc-2">혼자 준비하기 어려우시죠?</p>
-          <p class="attached-desc-3">보험전문가가 1:1 무료상담 해드립니다.</p>
-
-          <div style="margin-top: 12px;">
-            <a href="https://globalapi.adalba.co.kr/0c2caoaatpBV" target="_blank" rel="noopener noreferrer" class="click-banner-wrap">
-              <img src="images/click_banner.png" alt="보험 확인하기 클릭!" class="click-banner-img">
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- Partners Section (No title text) -->
-    <section class="partners-section">
+    <!-- Main Content Section -->
+    <section class="section-wrapper">
+      <div class="container">
+        
+        <!-- Red Ad Notice -->
+        <p class="red-ad-notice" style="text-align: center; margin-bottom: 30px;">
+          ※ 본 광고는 소정의 광고비(원고료 등)를 지급받아 작성하였습니다.
+        </p>
+
+        <!-- Consultation Grid -->
+        <div class="counsel-main-grid">
+          
+          <!-- Form Card -->
+          <div class="counsel-form-card">
+            <h3 class="form-header-title">📋 1분 다이렉트 맞춤 상담 신청</h3>
+            <p class="form-header-sub">간단한 정보만 입력하시면 7대 손보사 특약 할인 비교 결과를 빠르게 안내해 드립니다.</p>
+
+            <form class="counsel-form" id="counselForm">
+              
+              <!-- Driver Type Selection -->
+              <div class="form-group-item">
+                <label class="form-label-title">운전자 구분</label>
+                <div class="chips-container" id="driverTypeChips">
+                  <button type="button" class="chip-select-btn active" data-value="personal">개인 승용</button>
+                  <button type="button" class="chip-select-btn" data-value="family">패밀리카(가족용)</button>
+                  <button type="button" class="chip-select-btn" data-value="newcar">신차 / 중고차 구입</button>
+                  <button type="button" class="chip-select-btn" data-value="firstcar">20대 사회초년생 첫차</button>
+                </div>
+              </div>
+
+              <!-- Vehicle & Year -->
+              <div class="form-group-item" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div>
+                  <label class="form-label-title" for="carModel">차종 (차량명)</label>
+                  <input type="text" id="carModel" class="form-input-styled" placeholder="예: 아반떼, 쏘렌토, 그랜저" required>
+                </div>
+                <div>
+                  <label class="form-label-title" for="driverAge">운전자 연령</label>
+                  <select id="driverAge" class="form-select-styled">
+                    <option value="under26">만 26세 미만</option>
+                    <option value="age26" selected>만 26세 ~ 29세</option>
+                    <option value="age30">만 30세 ~ 34세</option>
+                    <option value="age35">만 35세 ~ 42세</option>
+                    <option value="age43">만 43세 ~ 49세</option>
+                    <option value="over50">만 50세 이상</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Driver Scope -->
+              <div class="form-group-item">
+                <label class="form-label-title">운전자 범위</label>
+                <div class="chips-container" id="driverScopeChips">
+                  <button type="button" class="chip-select-btn active" data-value="solo">1인 한정 (본인)</button>
+                  <button type="button" class="chip-select-btn" data-value="couple">부부 한정</button>
+                  <button type="button" class="chip-select-btn" data-value="family">가족 한정</button>
+                  <button type="button" class="chip-select-btn" data-value="any">누구나 운전</button>
+                </div>
+              </div>
+
+              <!-- Discounts of Interest -->
+              <div class="form-group-item">
+                <label class="form-label-title">관심 할인 특약 (중복 선택 가능)</label>
+                <div class="chips-container">
+                  <button type="button" class="chip-select-btn active" data-check="mileage">💰 마일리지 주행거리 할인 (최대 45%)</button>
+                  <button type="button" class="chip-select-btn active" data-check="tmap">📱 티맵/카카오 안전점수 (최대 16%)</button>
+                  <button type="button" class="chip-select-btn" data-check="blackbox">📹 블랙박스 & 첨단안전장치</button>
+                  <button type="button" class="chip-select-btn" data-check="children">👶 자녀 할인 특약 (최대 14%)</button>
+                  <button type="button" class="chip-select-btn" data-check="coverage10">🛡️ 대물배상 10억 확대</button>
+                </div>
+              </div>
+
+              <!-- Name & Contact -->
+              <div class="form-group-item" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div>
+                  <label class="form-label-title" for="applicantName">신청자 성함</label>
+                  <input type="text" id="applicantName" name="name" class="form-input-styled" placeholder="홍길동" required>
+                </div>
+                <div>
+                  <label class="form-label-title" for="applicantPhone">연락처</label>
+                  <input type="tel" id="applicantPhone" name="phone" class="form-input-styled" placeholder="010-0000-0000" maxlength="13" required>
+                </div>
+              </div>
+
+              <!-- Privacy Agreement -->
+              <div class="privacy-agree-box">
+                <p><strong>[개인정보 수집 및 이용 안내]</strong></p>
+                <p>1. 수집 항목: 성명, 연락처, 차종, 연령 | 2. 이용 목적: 자동차보험 상품 비교견적 상담 및 정보 제공 | 3. 보유 기간: 상담 완료 후 1년 또는 파기 요청 시까지</p>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="agree" checked required>
+                  <span>개인정보 수집 및 이용에 동의합니다. (필수)</span>
+                </label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn-counsel-submit">
+                <span>⚡ 1분 최저가 비교견적 & 무료상담 신청하기</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Sidebar Process & Quick Link -->
+          <aside class="counsel-sidebar">
+            
+            <!-- Direct CTA Box -->
+            <div class="sidebar-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: #ffffff; text-align: center;">
+              <h4 style="font-size: 19px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">실시간 자동비교 바로가기</h4>
+              <p style="font-size: 13.5px; color: #bfdbfe; margin-bottom: 18px; line-height: 1.5;">기다릴 필요 없이 1분 만에 내 차 다이렉트 견적을 즉시 확인하실 수 있습니다.</p>
+              <a href="https://globalapi.adalba.co.kr/0c2caoaatpBV" target="_blank" rel="noopener noreferrer" style="display: block; background: #facc15; color: #713f12; font-weight: 800; padding: 13px; border-radius: var(--radius-sm); font-size: 15px; box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);">
+                ⚡ 즉시 실시간 비교견적 조회 →
+              </a>
+            </div>
+
+            <!-- 3-Step Process -->
+            <div class="sidebar-box">
+              <h4 class="sidebar-title">🔍 3단계 간편 상담 절차</h4>
+              
+              <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                  <h5>차량 정보 & 희망 조건 입력</h5>
+                  <p>차종, 연령, 특약 조건을 1분 만에 간편 입력합니다.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                  <h5>7대 손보사 특약 비교 분석</h5>
+                  <p>마일리지, 티맵 등 가장 할인율이 높은 보험사를 매칭합니다.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                  <h5>최저가 다이렉트 가입 안내</h5>
+                  <p>설계사 수수료 0원의 최저가 다이렉트로 안전하게 가입합니다.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Operating Hours Info -->
+            <div class="sidebar-box">
+              <h4 class="sidebar-title">⏰ 상담 안내</h4>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.7;">
+                • 평일: 오전 09:00 ~ 오후 18:00<br>
+                • 주말/공휴일 접수 시 익영업일 우선 연락<br>
+                • 전화 상담 또는 카톡/문자 견적서 발송 가능
+              </p>
+            </div>
+
+          </aside>
+        </div>
+
+        <!-- 4 Core Benefits -->
+        <div style="margin-top: 60px;">
+          <div class="section-header" style="text-align: center; margin-bottom: 24px;">
+            <h3 style="font-size: 24px; font-weight: 800; color: #0f172a;">왜 '다이렉트 자동차보험 다나와'에서 상담해야 할까요?</h3>
+            <p style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">수수료 없이 정직하게, 고객님께 가장 유리한 보험사만을 추천합니다.</p>
+          </div>
+
+          <div class="benefits-cards-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon">💸</div>
+              <h4>설계사 수수료 0원</h4>
+              <p>오프라인 대면 가입 대비 평균 15~20% 저렴한 순수 다이렉트 요율 그대로 안내해 드립니다.</p>
+            </div>
+            
+            <div class="benefit-card">
+              <div class="benefit-icon">📊</div>
+              <h4>7대 손보사 특약 동시 비교</h4>
+              <p>현대해상, DB, KB, AXA 등 주요 손보사의 주행거리·안전운전 할인율을 한 번에 계산합니다.</p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">🛡️</div>
+              <h4>사고 시 안심 보장 점검</h4>
+              <p>대물 10억, 자동차상해(자상) 등 위험 상황에서 가족을 완벽히 지키는 필수 담보를 꼼꼼히 점검합니다.</p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">🚫</div>
+              <h4>과도한 가입 권유 NO</h4>
+              <p>비교견적 결과를 확인하시고 마음에 들 때 고객님이 직접 다이렉트로 선택 가입하시면 됩니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consultation FAQs -->
+        <div style="margin-top: 50px;">
+          <h3 style="font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px;">❓ 상담 신청 관련 자주 묻는 질문</h3>
+          <div class="faq-list">
+            
+            <div class="faq-item">
+              <div class="faq-question">다이렉트 보험인데 왜 비교 상담이 필요한가요?</div>
+              <div class="faq-answer">
+                다이렉트 보험은 소비자가 직접 가입하기 때문에 설계사 수수료가 없어 저렴합니다. 하지만 주행거리 특약, 티맵 안전점수 할인, 부부/가족 한정 범위, 대물 10억 설정 등 본인 조건에 가장 유리한 보험사와 할인 특약을 놓치기 쉽습니다. 전문가 상담을 통해 수십만 원의 보험료를 더 절약하실 수 있습니다.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">상담 신청 후 가입을 꼭 해야 하나요?</div>
+              <div class="faq-answer">
+                절대 아닙니다. 1:1 상담과 비교견적 조율은 100% 무료이며, 안내받으신 견적서를 꼼꼼히 검토하신 뒤 고객님께서 원하실 때 다이렉트로 자유롭게 가입하시면 됩니다.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">기존 보험 만기일이 언제인지 모르면 어떻게 하나요?</div>
+              <div class="faq-answer">
+                신청서에 성함과 연락처를 남겨주시면 간단한 본인 확인을 통해 현재 가입된 자동차보험 만기일을 신속하게 조회해 드립니다. 가장 할인 혜택이 큰 만기 30일 전 시점에 맞춰 최적의 견적을 안내해 드립니다.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section" style="background: #ffffff; padding: 40px 0; border-top: 1px solid var(--border-color);">
       <div class="container">
         <div class="partners-grid">
           <div class="partner-logo-item"><img src="images/logo_hyundai.png" alt="현대해상"></div>
@@ -85,6 +285,24 @@
       </div>
     </section>
   </main>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-content-box">
+      <div class="modal-icon-circle">✓</div>
+      <h3 class="modal-title-text">상담 신청이 완료되었습니다!</h3>
+      <p class="modal-desc-text">
+        전문 상담원이 7대 손보사 특약 비교 분석 후 남겨주신 연락처로 신속히 안내해 드리겠습니다.<br>
+        지금 바로 실시간 비교견적 페이지에서도 확인하실 수 있습니다.
+      </p>
+      <a href="https://globalapi.adalba.co.kr/0c2caoaatpBV" target="_blank" rel="noopener noreferrer" class="btn-modal-action" style="margin-bottom: 10px;">
+        ⚡ 실시간 비교견적 페이지 바로가기
+      </a>
+      <button type="button" class="btn-modal-action" id="modalCloseBtn" style="background: #e2e8f0; color: #334155;">
+        닫기
+      </button>
+    </div>
+  </div>
 
   <!-- Footer Compliance Disclosures -->
   <footer class="compliance-footer">

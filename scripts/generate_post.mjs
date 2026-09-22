@@ -363,7 +363,10 @@ async function generateArticle() {
         <span class="brand-sub">보험정보 칼럼</span>
       </a>
       <div class="header-actions">
-        <a href="/posts/" class="btn-home">칼럼 목록</a>
+        <a href="/" class="btn-home">HOME</a>
+        <a href="/counsel.html" class="btn-home">상담신청</a>
+        <a href="/coverage.html" class="btn-home">보장내용</a>
+        <a href="/posts/" class="btn-home" style="color: var(--primary); font-weight: 800;">보험정보</a>
         <a href="${siteConfig.ctaUrl}" target="_blank" rel="noopener noreferrer" class="btn-cta-header">
           <span>⚡ 1분 최저가 비교견적</span>
         </a>
@@ -547,24 +550,18 @@ function updateSitemap(posts) {
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- 기존 주요 페이지 -->
+  <!-- 상담신청 & 보장내용 정적 페이지 -->
   <url>
-    <loc>${baseUrl}/?page_id=48</loc>
+    <loc>${baseUrl}/counsel.html</loc>
     <lastmod>${todayIso}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>${baseUrl}/?page_id=14</loc>
+    <loc>${baseUrl}/coverage.html</loc>
     <lastmod>${todayIso}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/?page_id=16</loc>
-    <lastmod>${todayIso}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 `;
 
