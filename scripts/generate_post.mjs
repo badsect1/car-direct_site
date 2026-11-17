@@ -29,7 +29,9 @@ loadEnv(path.join(rootDir, '..', 'saehanccm.com(githup 배포)', '.env'));
 
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) {
-  console.error('❌ 오류: GEMINI_API_KEY 환경변수가 설정되지 않았습니다. .env 파일에 키를 입력해주세요.');
+  console.error('❌ 오류: GEMINI_API_KEY 환경변수가 설정되지 않았습니다.');
+  console.error('💡 [로컬 실행] .env 파일에 GEMINI_API_KEY=... 키가 올바르게 입력되어 있는지 확인해주세요.');
+  console.error('💡 [GitHub Actions] GitHub 저장소의 Settings -> Secrets and variables -> Actions 에 GEMINI_API_KEY 시크릿이 등록되어 있는지 확인해주세요.');
   process.exit(1);
 }
 console.log(`🔑 GEMINI_API_KEY 확인됨: 길이 ${apiKey.length}자 (${apiKey.slice(0, 6)}...${apiKey.slice(-4)})`);
@@ -86,7 +88,7 @@ Google 검색, 네이버 서치어드바이저, 그리고 Perplexity, ChatGPT Se
 - 세부 주제: ${randomSubtopic}
 - 타겟 차종: ${randomVehicle}
 - 타겟 운전자 연령층: ${randomAgeGroup}
-- 주요 비교 손보사: ${randomInsurer} (현대해상, DB손보, KB손보 등 7개 손해보험사)
+- 주요 비교 손보사: ${randomInsurer} (현대해상, DB손보, 한화손보 등 6개 손해보험사)
 - 참고 템플릿: ${randomTemplate.titleTemplate} (포커스: ${randomTemplate.focus})
 - 비교견적 랜딩 URL: ${siteConfig.ctaUrl}
 
@@ -103,7 +105,7 @@ ${existingTitles || '없음 (첫 번째 칼럼)'}
    - <div class="geo-table-wrapper"><table>...</table></div> 형태로 옵션별 또는 보험사별 비교표(예: 대물 2억 vs 5억 vs 10억 보험료 차이, 마일리지 구간별 환급률, 주행거리별 절약액 등) 필수 1개 이상 포함
    - <div class="notice-box tip"><div class="notice-title">💡 전문가 실전 절약 팁</div><p>...</p></div> 또는 <div class="notice-box warning"><div class="notice-title">⚠️ 가입 전 주의사항</div><p>...</p></div> 강조 블록 1개 이상 포함
    - 본문 중간에 자연스럽게 1분 최저가 비교견적 CTA 배너 배치:
-     <div class="intext-cta-banner"><h4>내 차 다이렉트 자동차보험료, 1분 만에 최저가 비교해보세요</h4><p>국내 주요 7대 손해보험사(현대해상, DB, KB, AXA, 한화 등)의 특약 할인율을 한 번에 계산해 드립니다.</p><a href="${siteConfig.ctaUrl}" target="_blank" rel="noopener noreferrer" class="btn-cta-large">⚡ 1분 최저가 비교견적 조회하기</a></div>
+     <div class="intext-cta-banner"><h4>내 차 다이렉트 자동차보험료, 1분 만에 최저가 비교해보세요</h4><p>국내 주요 6대 손해보험사(현대해상, DB, AXA, 한화 등)의 특약 할인율을 한 번에 계산해 드립니다.</p><a href="${siteConfig.ctaUrl}" target="_blank" rel="noopener noreferrer" class="btn-cta-large">⚡ 1분 최저가 비교견적 조회하기</a></div>
    - 정확한 보험 법률/규정(자동차손해배상보장법, 도로교통법, 손해보험협회 표준약관 등) 인용
 5. **자주 묻는 질문(faqs)**:
    - 실제 운전자가 네이버나 구글, 챗GPT에 검색하는 구어체 질문 3~4개와 각 2~3문장의 명쾌한 팩트 답변
@@ -113,7 +115,7 @@ ${existingTitles || '없음 (첫 번째 칼럼)'}
 async function getAvailableModel() {
   try {
     const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`;
-    const listRes = await fetch(listUrl);
+    const listRes = await fetch(listUrl, { signal: AbortSignal.timeout(10000) });
     if (listRes.ok) {
       const data = await listRes.json();
       const models = (data.models || [])
@@ -127,7 +129,9 @@ async function getAvailableModel() {
         'gemini-flash-latest',
         'gemini-3.8-flash',
         'gemini-3.5-flash',
-        'gemini-3.1-flash-lite'
+        'gemini-3.1-flash-lite',
+        'gemini-pro-latest'
+      ];
       ];
       for (const p of priorityOrder) {
         if (models.includes(p)) return p;
@@ -140,7 +144,7 @@ async function getAvailableModel() {
   } catch (e) {
     console.warn('⚠️ 모델 목록 조회 예외, 기본 모델군 시도:', e.message);
   }
-  return 'gemini-3.5-flash-lite';
+  return 'gemini-3.8-flash';
 }
 
 function safeJsonParse(text) {
@@ -180,7 +184,9 @@ async function generateArticle() {
     'gemini-flash-lite-latest',
     'gemini-flash-latest',
     'gemini-3.8-flash',
-    'gemini-3.5-flash'
+    'gemini-3.5-flash',
+    'gemini-3.1-flash-lite',
+    'gemini-pro-latest'
   ];
   const uniqueModels = [...new Set(candidateModels.filter(Boolean))];
 
@@ -469,7 +475,7 @@ async function generateArticle() {
       <!-- 본문 하단 전환 CTA 배너 -->
       <div class="cta-banner-box">
         <h3>내 차 다이렉트 보험료, 1분 만에 최저가를 찾아보세요</h3>
-        <p>현대해상, DB손해보험, KB손해보험, AXA 등 주요 손해보험사 특약 할인을 실시간으로 비교해 드립니다.</p>
+        <p>현대해상, DB손해보험, AXA손해보험, 한화손해보험 등 주요 6대 손해보험사 특약 할인을 실시간으로 비교해 드립니다.</p>
         <div class="cta-buttons">
           <a href="${siteConfig.ctaUrl}" target="_blank" rel="noopener noreferrer" class="btn-cta-quote">
             <span>⚡ 내 차 다이렉트 최저가 비교견적 확인</span>
@@ -495,7 +501,7 @@ async function generateArticle() {
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">${siteConfig.siteName}</div>
-        <div>제휴사: 현대해상 · DB손해보험 · KB손해보험 · AXA손해보험 · 한화손해보험 · 흥국화재 · 하나손해보험</div>
+        <div>제휴사: 현대해상 · DB손해보험 · AXA손해보험 · 한화손해보험 · 흥국화재 · 하나손해보험</div>
       </div>
       <p>본 칼럼은 금융소비자의 합리적인 자동차보험 선택과 권익 보호를 위해 객관적인 공시자료 및 약관을 바탕으로 작성되었습니다.</p>
       <p class="footer-legal">© ${siteConfig.siteName}. All rights reserved.</p>
