@@ -132,7 +132,6 @@ async function getAvailableModel() {
         'gemini-3.1-flash-lite',
         'gemini-pro-latest'
       ];
-      ];
       for (const p of priorityOrder) {
         if (models.includes(p)) return p;
       }
