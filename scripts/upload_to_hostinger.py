@@ -293,7 +293,7 @@ def main():
             
             # 루트 개별 파일
             if os.path.isfile(item_path):
-                if item in EXCLUDE_FILES or item.startswith('.'):
+                if item in EXCLUDE_FILES or (item.startswith('.') and item != '.htaccess'):
                     continue
                 total_scanned += 1
                 remote_file = posixpath.join(target_base, item)
